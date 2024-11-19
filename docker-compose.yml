@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  back:
+    build:
+      context: ./backend-app
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    restart: unless-stopped
+    volumes:
+      - /app/node_modules
+  front:
+    build:
+      context: ./frontend-app
+      dockerfile: Dockerfile
+    ports:
+      - '8080:80'
+    depends_on:
+      - back

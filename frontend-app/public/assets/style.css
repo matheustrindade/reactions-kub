@@ -1,0 +1,108 @@
+*, 
+*:after,
+*:before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    overflow: visible;
+}
+
+body {
+    font-size: 100%;
+    list-style-type: none;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    background-color: #f3f3f3;
+}
+
+.card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 32px;
+    border-radius: 25px;
+    border: 1px solid #e3e3e3;
+    background-color: #fff;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    z-index: 1;
+}
+
+.card__label__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: center;
+}
+
+.card__label__text,
+.card__label__icon {
+    font-size: 32px;
+}
+
+.card__actionButton {
+    position: relative; 
+    z-index: 2; 
+    padding: 16px 32px;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+    border: none;
+    border-radius: 8px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+@keyframes button-active {
+    0% {
+        width: 100%;
+        height: 100%;
+        box-shadow: 0px;
+    }
+    50% {
+        width: calc(100% + 8px);
+        height: calc(100% + 8px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    100% {
+        width: 100%;
+        height: 100%;
+        box-shadow: 0px;
+    }
+}
+
+.card__actionButton::after {
+    content: '';
+    position: absolute; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%; 
+    background-color: rgba(0, 123, 255, 0.2); 
+    border-radius: 8px; 
+    z-index: 1;
+}
+
+.card__actionButton__retry {
+    background-color: #b5b5b5;
+}
+
+.card__actionButton:not(:disabled):hover {
+    cursor: pointer;
+    filter: brightness(.9);
+    transition: filter .3s;
+}
+
+.card__actionButton:active::after,
+.card__actionButton:focus::after {
+    animation: button-active .5s ease;
+}
+
